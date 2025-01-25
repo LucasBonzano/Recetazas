@@ -1,20 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Recetas from './pages/Recetas';
+import About from './pages/Nosotros';
+import { Toaster } from 'react-hot-toast'
+import Navbar from './componentes/navbar';
+import NewReceta from './pages/NewReceta';
 
-const App: React.FC = () => {
-    const [message, setMessage] = useState<string>('');
+function App(){
+    return(
+        <div>
+            <BrowserRouter>
+            <Navbar/>
+                <Routes>
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/About" element={<About/>}/>
+                    <Route path="/Login" element={<Login/>}/>
+                    <Route path="/Register" element={<Register/>}/>
+                    <Route path="/Recetas" element={<Recetas/>}/>
+                    <Route path="/NewReceta" element={<NewReceta/>}/>
+                </Routes>
+                <Toaster/>
+            </BrowserRouter>
+        </div>  
+    )
+  }
 
-    useEffect(() => {
-        axios.get('/api/example/')
-            .then(response => setMessage(response.data.message))
-            .catch(error => console.error('Error al obtener datos:', error));
-    }, []);
-    return (
-        <div className="App flex justify-center items-center min-h-screen bg-gray-100">
-            <h1 className="text-4xl font-bold text-blue-500">React + Django</h1>
-            <p>{message || 'Cargando...'}</p>
-        </div>
-    );
-};
-
-export default App;
+export default App
