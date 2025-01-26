@@ -54,12 +54,6 @@ const Navbar: React.FC = () => {
                 Iniciar sesión
               </button>
               <button
-                onClick={() => handleNavigate("/Register")}
-                className="block w-full text-left px-4 py-2 hover:bg-gray-100"
-              >
-                Registrarse
-              </button>
-              <button
                 onClick={() => handleNavigate("/Recetas")}
                 className="block w-full text-left px-4 py-2 hover:bg-gray-100"
               >
